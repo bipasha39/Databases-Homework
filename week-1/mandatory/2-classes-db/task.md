@@ -7,8 +7,62 @@ Below you will find a set of tasks for you to complete to set up a databases of 
 To submit this homework write the correct commands for each question here:
 
 ```sql
+1.CREATE DATABASE cyf_class;
+2. CREATE TABLE mentors(
+  id            SERIAL PRIMARY KEY,
+  name          VARCHAR(30) NOT NULL,
+  glasgow_years INT NOT NULL,
+  address       VARCHAR(120) NOT NULL,
+  fav_prog_language    VARCHAR(30) NOT NULL
+);
+3.INSERT INTO mentors (name, glasgow_years, address, fav_prog_language) VALUES ('John Smith','5','11 New Road','java');
+INSERT INTO mentors (name, glasgow_years, address, fav_prog_language) VALUES ('Shehnaz','12','42 Duck House','Javascript');
+INSERT INTO mentors (name, glasgow_years, address, fav_prog_language) VALUES ('Carlos','3','14 Cendra','Ruby');
+INSERT INTO mentors (name, glasgow_years, address, fav_prog_language) VALUES ('Benesa schrez','9','02 old road','C++');
+INSERT INTO mentors (name, glasgow_years, address, fav_prog_language) VALUES ('Ramon Llul','10','13 New Road','Javascript');
+4.CREATE TABLE students(
+  id            SERIAL PRIMARY KEY,
+  name          VARCHAR(30) NOT NULL,
+  address       VARCHAR(120) NOT NULL,
+  graduated     VARCHAR(30) NOT NULL
+);
+5.INSERT INTO students (name, address, graduated) VALUES ('John Nava','2 New Road','yes'); 
+INSERT INTO students (name, address, graduated) VALUES ('Juan Albez','15 Paloma','yes'); 
+INSERT INTO students (name, address, graduated) VALUES ('Alexender Flaming','7 Lluna','no'); 
+INSERT INTO students (name, address, graduated) VALUES ('Stuard Broad','10 Sant Pau','no'); 
+INSERT INTO students (name, address, graduated) VALUES ('Gayle Jordan','11 West Feri','yes'); 
+INSERT INTO students (name, address, graduated) VALUES ('Leoarndo Rafsan','21 Hamilton Road','yes'); 
+INSERT INTO students (name, address, graduated) VALUES ('Victar Alex','12 Dock Road','yes'); 
+INSERT INTO students (name, address, graduated) VALUES ('Nicolas Fernandes','14 Charls Road','yes'); 
+INSERT INTO students (name, address, graduated) VALUES ('Franko Albert','27 Dhanmondi','yes'); 
+INSERT INTO students (name, address, graduated) VALUES ('Newton Dario','11 Banani','no'); 
+6.USE sql statement like "SELECT * FROM mentors;" or "SELECT name,address FROM students;"
+7.create table classes (
+	id serial primary key,
+	mentor serial references mentors(id),
+	topic varchar(30),
+	date  date not null,
+	location  varchar(30) not null
+);
+8.insert into classes (mentor, topic, date, location) values(2, 'javascript', now(), 'online');
+insert into classes (mentor, topic, date, location) values(3, 'Ruby', now(), 'online');
+insert into classes (mentor, topic, date, location) values(1, 'java', now(), 'online');
+9.create table attendance (
+	id serial primary key,
+	student serial references students(id),
+	class serial references classes(id)
+);
+insert into attendance (student,class) values(1,2);
+insert into attendance (student,class) values(2,1);
+insert into attendance (student,class) values(10,3);
+insert into attendance (student,class) values(5,1);
+insert into attendance (student,class) values(8,2);
 
-
+10.select * from mentors where glasgow_years > 5;
+select * from mentors where fav_prog_language = 'Javascript';
+select * from students where graduated = 'yes';
+select * from classes where date < '01/06/2020';
+select * from attendance where class = 1;
 ```
 
 When you have finished all of the questions - open a pull request with your answers to the `Databases-Homework` repository.

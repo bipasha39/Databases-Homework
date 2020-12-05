@@ -10,6 +10,60 @@ To submit this homework write the correct commands for each question here:
 
 ```sql
 
+1.SELECT name,address FROM customers WHERE country = 'United States';
+2.SELECT * FROM customers order by name;
+3.SELECT * FROM  products where unit_price > 100;
+4.SELECT * FROM products WHERE product_name iLIKE '%socks%';
+5.select * from products order by unit_price desc limit 5;
+6.select p.product_name,p.unit_price,s.supplier_name
+from products p
+join suppliers s
+on s.id = p.supplier_id;
+
+7.select p.product_name,s.supplier_name
+from products p
+join suppliers s
+on p.supplier_id = s.id 
+where s.country ='United Kingdom';
+
+8.select * from orders where customer_id = 1;
+
+9.select *
+from orders o
+join customers c
+	on o.customer_id = c.id
+where c.name = 'Hope Crosby';
+
+10.select p.product_name, p.unit_price, oi.quantity
+from products p
+join order_items oi
+	on p.id = oi.product_id
+join orders o
+	on oi.order_id = o.id
+where o.order_reference = 'ORD006';
+
+11.select c.name, o.order_reference, o.order_date, p.product_name, s.supplier_name, oi.quantity
+from products p
+join suppliers s
+	on s.id = p.supplier_id
+join order_items oi
+	on oi.product_id = p.id
+join orders o
+	on o.id = oi.order_id
+join customers c
+	on c.id = o.customer_id;
+
+12.select distinct c.name
+from customers c
+join orders o
+	on o.customer_id = c.id
+join order_items oi
+	on oi.order_id = o.id
+join products p
+	on p.id = oi.product_id
+join suppliers s
+	on s.id = p.supplier_id
+where s.country = 'China';
 
 ```
 
